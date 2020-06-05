@@ -1,4 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import IssueSearchBar from "./components/IssueSearchBar";
+import IssueBlock from "./components/IssueBlock";
+import PostIssue from "./components/PostIssue";
+import OriginalPost from "./components/OriginalPost";
+import CommentBlock from "./components/CommentBlock";
+import SideBar from "./components/SideBar";
+import Reply from "./components/Reply";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 const clientId = process.env.REACT_APP_CLIENT_ID;
@@ -50,7 +60,34 @@ function App() {
 	}, []);
 	return (
 		<div className="App">
-			<button onClick={() => getIssues()}>issues</button>
+			<BrowserRouter>
+				{/* <button onClick={() => getIssues()}>issues</button> */}
+				<NavBar />
+				<Switch>
+					<Route path="/" exact>
+						Here is our HomePage.
+					</Route>
+					<Route path="/new">
+						<PostIssue token={token} />
+					</Route>
+					<Route path="/:owner/:repo/issues" exact>
+						<IssueSearchBar />
+						<IssueBlock />
+					</Route>
+					<Route path="/:owner/:repo/issues/:issueID">
+						<div className="row">
+							<div className="col-md-8 col-12">
+								<OriginalPost />
+								<CommentBlock />
+								<Reply token={token} />
+							</div>
+							<div className="col-md-4 d-md-block d-none">
+								<SideBar />
+							</div>
+						</div>
+					</Route>
+				</Switch>
+			</BrowserRouter>
 		</div>
 	);
 }
