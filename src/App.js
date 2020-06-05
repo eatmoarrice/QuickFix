@@ -41,7 +41,7 @@ function App() {
 		let url = "https://api.github.com/repos/facebook/react/issues/";
 		let data = await fetch(url);
 		let result = await data.json();
-		console.log(result);
+		console.log("result",result);
 	};
 
 
@@ -67,6 +67,7 @@ function App() {
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
 				<NavBarHey path="/test1" />
+
 				<Switch>
 					<Route path="/" exact>
 						Here is our HomePage.
@@ -83,7 +84,7 @@ function App() {
 							<div className="col-md-8 col-12">
 								<OriginalPost />
 								<CommentBlock />
-								<Reply token={token} />
+								{/* <Reply token={token} /> */}
 							</div>
 							<div className="col-md-4 d-md-block d-none">
 								<SideBar />
