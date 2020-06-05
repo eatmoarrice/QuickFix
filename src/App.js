@@ -40,7 +40,7 @@ function App() {
 		let url = "https://api.github.com/repos/facebook/react/issues";
 		let data = await fetch(url);
 		let result = await data.json();
-		console.log(result);
+		console.log("result",result);
 	};
 
 	const postNewIssue = async () => {
@@ -62,6 +62,7 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
+				
 				<NavBar />
 				<Switch>
 					<Route path="/" exact>
@@ -79,7 +80,7 @@ function App() {
 							<div className="col-md-8 col-12">
 								<OriginalPost />
 								<CommentBlock />
-								<Reply token={token} />
+								{/* <Reply token={token} /> */}
 							</div>
 							<div className="col-md-4 d-md-block d-none">
 								<SideBar />
