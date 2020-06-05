@@ -56,6 +56,7 @@ function App() {
 		});
 	};
 	useEffect(() => {
+		getIssues();
 		getToken();
 	}, []);
 	return (
@@ -65,16 +66,15 @@ function App() {
 				<NavBar />
 				<Switch>
 					<Route path="/" exact>
-						Here is our HomePage.
-					</Route>
-					<Route path="/new">
-						<PostIssue token={token} />
-					</Route>
-					<Route path="/:owner/:repo/issues" exact>
+						stuff here
 						<IssueSearchBar />
 						<IssueBlock />
 					</Route>
-					<Route path="/:owner/:repo/issues/:issueID">
+					<Route path="/:owner/:repo/new">
+						<PostIssue token={token} />
+					</Route>
+
+					<Route path="/:owner/:repo/:issueID">
 						<div className="row">
 							<div className="col-md-8 col-12">
 								<OriginalPost />
