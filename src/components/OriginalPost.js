@@ -4,42 +4,65 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 
 
-export default function OriginalPost() {
-	let [user,setUserState]=useState(null);
 
-	const getOriginalPost = async () => {
+ import moment from 'moment'
+
+
+export default function OriginalPost(props) {
+	const [issueInfo, setInfo] = useState(null)
+
+
+	const getIssues = async () => {
 		console.log("issues here");
-		let url = "https://api.github.com/repos/alacritty/alacritty/issues/3820";
+		let url = "https://api.github.com/repos/facebook/react/issues/19073";
 		let data = await fetch(url);
 		let result = await data.json();
-		setUserState(result)
-		console.log(result);
+		setInfo(result)
+		console.log("result", result);
 	};
 
-	let commentList = [];
 
 
+	const postedAt = () => {
+		let vinh = moment(issueInfo.updated_at)
 
-
-	const saveStorage = () => {
-		localStorage.setItem("commentList", JSON.stringify(commentList));
-
+		let date = moment(vinh).fromNow()
+		console.log("date", date)
+		return date
 	}
-	useEffect(() => {
-		getOriginalPost();
-		
-	}, [])
-	if(user==null){
-		return(
-		<div>Loading</div>
-		)}
-	return <div className="d-flex" >
-		
-		
-			<div>This is the pic profile</div>
-			<div>This is the post</div>
 
-		
-	</div>;
+
+
+	useEffect(() => {
+		getIssues()
+
+
+	}, [])
+
+	if (issueInfo === null) {
+		return <div>loading</div>
+	}
+
+	return <div className="d-flex justify-content-between">
+
+		<div>
+			<h4>
+				{issueInfo.title} #{issueInfo.number}
+			</h4>
+			<div >
+				<span className="badge badge-success"> {issueInfo.state}</span>
+				&nbsp;
+				<span className="font-weight-bold">{issueInfo.user.login}</span> opened this issue&nbsp;
+			 {postedAt()}
+				&nbsp; · &nbsp;{issueInfo.comments} Comments
+			</div>
+		</div>
+		<div>
+			<button className="badge badge-success">
+				New Issue
+			</button>
+		</div>
+	</div>
+
 }
 
