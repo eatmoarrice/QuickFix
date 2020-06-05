@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBarHey from "./components/NavBar";
 import IssueSearchBar from "./components/IssueSearchBar";
 import IssueBlock from "./components/IssueBlock";
 import PostIssue from "./components/PostIssue";
@@ -8,6 +8,7 @@ import OriginalPost from "./components/OriginalPost";
 import CommentBlock from "./components/CommentBlock";
 import SideBar from "./components/SideBar";
 import Reply from "./components/Reply";
+import PageNotFound from './components/PageNotFound'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -65,7 +66,7 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
-				<NavBar />
+				<NavBarHey path="/test1" />
 				<Switch>
 					<Route path="/" exact>
 						Here is our HomePage.
@@ -88,6 +89,10 @@ function App() {
 								<SideBar />
 							</div>
 						</div>
+					</Route>
+					<Route path="/test">
+						<PageNotFound />
+
 					</Route>
 				</Switch>
 			</BrowserRouter>
