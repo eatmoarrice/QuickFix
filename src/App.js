@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import IssueSearchBar from "./components/IssueSearchBar";
 import IssueBlock from "./components/IssueBlock";
@@ -41,11 +41,12 @@ function App() {
 		let data = await fetch(url);
 		let result = await data.json();
 		console.log(result);
+
 	};
 
 	const postNewIssue = async () => {
 		const issue = { title: "here is the issue", body: "help me to fix this" };
-		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
+		const url = `https://api.github.com/repos/eatmoarrice/QuickFix/issues`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
@@ -56,6 +57,8 @@ function App() {
 		});
 	};
 	useEffect(() => {
+		
+		getIssues()
 		getToken();
 	}, []);
 	return (
@@ -63,9 +66,12 @@ function App() {
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
 				<NavBar />
+				
+        
 				<Switch>
 					<Route path="/" exact>
 						Here is our HomePage.
+						
 					</Route>
 					<Route path="/new">
 						<PostIssue token={token} />
