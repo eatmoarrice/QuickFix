@@ -35,7 +35,7 @@ export default function CommentBlock(props) {
 			<thead>
 				<tr align="left" bgcolor="#eeeeee">
 					<th width="50"><img width="50" src={item.user.avatar_url}></img></th>
-					<th>{`${item.user.login} commented: ${moment(item.created_at).fromNow()}`}</th>
+					<th style={{paddingLeft:"10px"}}>{`${item.user.login}`}<span style={{fontWeight:"normal"}}>{` commented: ${moment(item.created_at).fromNow()}`}</span></th>
 					<th></th>
 					<th className="text-right">Emoji Here</th>
 				</tr>
@@ -45,7 +45,7 @@ export default function CommentBlock(props) {
 					<td></td>
 					<td></td>
 					<td></td>
-					<td className="text-right">{`ID: ${item.user.id}`}</td>
+					<td className="text-right" padding="5">{`ID: ${item.user.id}`}</td>
 				</tr>
 				<tr>
 					<td></td>
