@@ -7,12 +7,15 @@ export default function OriginalPost(props) {
 
 
 	const getIssues = async () => {
+
 		// console.log("issues here");
+
 		let url = "https://api.github.com/repos/facebook/react/issues/19073";
 		let data = await fetch(url);
 		let result = await data.json();
 		setInfo(result)
 		// console.log("result", result);
+
 	};
 
 
@@ -22,6 +25,7 @@ export default function OriginalPost(props) {
 
 		let date = moment(vinh).fromNow()
 		// console.log("date", date)
+
 		return date
 	}
 

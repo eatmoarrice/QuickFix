@@ -56,7 +56,5 @@ export default function Reply(props) {
 				</tr>
 			</tbody>
 		</table>
-
-
 	</div>;
 }
