@@ -39,5 +39,64 @@
 
 code{
   background-color: #eeeeee;
+  margin-left: 15px;
   padding: 5px;
+  border-radius: 2px;
+}
+
+pre code{
+  background-color: #eeeeee;
+  margin-left: 15px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.fa-caret-left{
+  font-size: 25px;
+  position: relative;
+  left: -8px;
+  color: #eeeeee;
+}
+
+.replyBtn{
+  z-index: 999;
+  transition-duration: .3s;
+}
+.replyBtn:hover{
+  background-color: #007bff!important;
+  transition-duration: .3s;
+}
+
+.dropdown-item{
+  display: inline;
+}
+.dropdown-menu{
+  text-align: center;
+  min-width: 10rem;
+}
+
+a.dropdown-item{
+  padding: 5px;
+}
+
+.btn-secondary{
+  font-size: 20px;
+  background-color: white;
+  color: #6c757d;
+  margin: 5px;
+  padding: 0px 5px;
+  border: none;
+}
+
+.btn-secondary:hover{
+  background-color: #6c757d;
+}
+
+.btn-primary{
+  font: 900 16px Arial;
+  border-radius: 20px;
+}
+
+.avatar{
+  transform: scale(1.05, 1.05)
 }
