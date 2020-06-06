@@ -37,23 +37,6 @@
   }
 }
 
-.mg{
-  
-  width: 60%;
-  margin: 30px auto ;
-  border-bottom: 1px solid salmon;
-}
-.flex{
-  display: flex;
-  justify-content: space-evenly;
-}
-.space{
-  color: red;
-}
-.flexx{
-  display: flex;
-  justify-content: space-around;
-
 code{
   background-color: #eeeeee;
   margin-left: 15px;
