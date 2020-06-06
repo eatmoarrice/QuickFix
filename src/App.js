@@ -10,7 +10,7 @@ import OriginalPost from "./components/OriginalPost";
 import CommentBlock from "./components/CommentBlock";
 import SideBar from "./components/SideBar";
 import Reply from "./components/Reply";
-import PageNotFound from './components/PageNotFound'
+import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -44,10 +44,8 @@ function App() {
 		let data = await fetch(url);
 		let result = await data.json();
 
-		console.log("result",result);
+		console.log("result", result);
 	};
-
-
 
 	const postNewIssue = async () => {
 		const issue = { title: "here is the issue", body: "help me to fix this" };
@@ -75,7 +73,6 @@ function App() {
 				<Switch>
 					<Route path="/" exact>
 						Here is our HomePage.
-						
 					</Route>
 					<Route path="/new">
 						<PostIssue token={token} />
@@ -84,7 +81,11 @@ function App() {
 						<IssueSearchBar />
 						<IssueBlock />
 					</Route>
-					<Route path="/:owner/:repo/issues/:issueID">
+					<Route path="/:owner/:repo/new">
+						<PostIssue token={token} />
+					</Route>
+
+					<Route path="/:owner/:repo/:issueID">
 						<div className="row">
 							<div className="col-md-8 col-12">
 								<OriginalPost />
@@ -98,7 +99,6 @@ function App() {
 					</Route>
 					<Route path="/test">
 						<PageNotFound />
-
 					</Route>
 				</Switch>
 			</BrowserRouter>
