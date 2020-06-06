@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBarHey from "./components/NavBar";
+
 import IssueSearchBar from "./components/IssueSearchBar";
 import IssueBlock from "./components/IssueBlock";
 import PostIssue from "./components/PostIssue";
@@ -41,6 +43,7 @@ function App() {
 		let url = "https://api.github.com/repos/facebook/react/issues/";
 		let data = await fetch(url);
 		let result = await data.json();
+
 		console.log("result",result);
 	};
 
@@ -48,7 +51,7 @@ function App() {
 
 	const postNewIssue = async () => {
 		const issue = { title: "here is the issue", body: "help me to fix this" };
-		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
+		const url = `https://api.github.com/repos/eatmoarrice/QuickFix/issues`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
@@ -66,11 +69,13 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
+
 				<NavBarHey path="/test1" />
 
 				<Switch>
 					<Route path="/" exact>
 						Here is our HomePage.
+						
 					</Route>
 					<Route path="/new">
 						<PostIssue token={token} />
