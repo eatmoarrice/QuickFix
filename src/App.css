@@ -38,18 +38,35 @@
 }
 .mg{
   
-  width: 60%;
+  min-width: 100px;
   margin: 30px auto ;
-  border-bottom: 1px solid salmon;
+  border-bottom: 1px solid #e1e4e8;
 }
 .flex{
   display: flex;
-  justify-content: space-evenly;
+  
+}
+.flex h4{
+  float: right;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  
 }
 .space{
   color: red;
 }
 .flexx{
   display: flex;
-  justify-content: space-around;
+  
+}
+.icon{
+  color: #28a745;
+  margin-top: 10px;
+  font-size: 20px;
+}
+.bigIssue{
+  border: 1px solid #e1e4e8;
+  width: 70%;
+  margin: 30px auto;
 }

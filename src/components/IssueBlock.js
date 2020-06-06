@@ -46,7 +46,7 @@ export default function IssueBlock(props) {
 	return (
 		<div>
 			
-			<div>
+			<div className="bigIssue">
 			{item()}
 		</div>
 			<IssueBlockHeader />
