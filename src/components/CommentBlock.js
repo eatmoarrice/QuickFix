@@ -1,56 +1,62 @@
-import React, { useState, useEffect } from "react";
-import Media from 'react-bootstrap/Media';
+import React, {useState, useEffect} from "react";
+import moment from 'moment'
+import ReactMarkdown from 'react-markdown'
+
+
 
 export default function CommentBlock(props) {
-	const [commentInfo, setComment] = useState(null)
-
-
-	const getComments = async () => {
-		console.log("issues here");
-		let url = "https://api.github.com/repos/facebook/react/issues/19073";
+	
+	const fetchSingleComment = async () => {
+		let url = "https://api.github.com/repos/facebook/react/issues/19073/comments";
 		let data = await fetch(url);
 		let result = await data.json();
-		setComment(result)
-		console.log("result", result);
+		setSingleComment(result)
 	};
 
-
-
-
-
-
-
 	useEffect(() => {
-		getComments()
-
-
+		fetchSingleComment();
 	}, [])
 
-	if (commentInfo === null) {
-		return <div>loading</div>
+	const [singleComment, setSingleComment] = useState(null)
+
+	if (singleComment == null){
+		return <div>Loading</div>
 	}
 
-	return <div>
 
-		<div>
-			<Media>
-				<img
-					width={64}
-					height={64}
-					className="mr-3"
-					src={commentInfo.user.avatar_url}
-					alt="Generic placeholder"
-				/>
-				<Media.Body>
+	return (
+	<div>
 
-					<p>
-						{commentInfo.body}
-					</p>
-				</Media.Body>
-			</Media>
-		</div>
+		{singleComment.map((item, index) =>{
 
-	</div>
+			return (
 
+		<table  width="800">
+			<thead>
+				<tr align="left" bgcolor="#eeeeee">
+					<th width="50"><img width="50" src={item.user.avatar_url}></img></th>
+					<th>{`${item.user.login} commented: ${moment(item.created_at).fromNow()}`}</th>
+					<th></th>
+					<th className="text-right">Emoji Here</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td className="text-right">{`ID: ${item.user.id}`}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colSpan="3" align="left" className="ArticleCopy"><ReactMarkdown source={item.body}/></td>
+				</tr>
+				</tbody>
+		</table>
+				
+		)
+})}	
+</div>
+	)
 }
 

@@ -20,7 +20,7 @@ function App() {
 		const accessToken = window.location.search.split("=")[0] === "?access_token" ? window.location.search.split("=")[1] : null;
 
 		if (!accessToken && !existingToken) {
-			window.location.replace(`https://github.com/login/oauth/authorize?scope=user:email,repo&client_id=${clientId}`);
+			window.location.replace(`https://cors-anywhere.herokuapp.com/?fbclid=IwAR3Tbb34Mli5WR5BopX62h31_x6MMuz0ptUMD43S3XmIo7mj-KnZ3iDmHYohttps://github.com/login/oauth/authorize?scope=user:email,repo&client_id=${clientId}`);
 		}
 
 		if (accessToken) {
@@ -40,14 +40,14 @@ function App() {
 		let url = "https://api.github.com/repos/facebook/react/issues/";
 		let data = await fetch(url);
 		let result = await data.json();
-		console.log(result);
+		console.log("result",result);
 	};
 
 
 
 	const postNewIssue = async () => {
 		const issue = { title: "here is the issue", body: "help me to fix this" };
-		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
+		const url = `https://cors-anywhere.herokuapp.com/api.github.com/repos/legobitna/itviec/issues`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
@@ -65,6 +65,7 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
+				
 				<NavBar />
 				<Switch>
 					<Route path="/" exact>
@@ -82,7 +83,7 @@ function App() {
 							<div className="col-md-8 col-12">
 								<OriginalPost />
 								<CommentBlock />
-								<Reply token={token} />
+								{/* <Reply token={token} /> */}
 							</div>
 							<div className="col-md-4 d-md-block d-none">
 								<SideBar />

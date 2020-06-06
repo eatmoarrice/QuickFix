@@ -1,5 +1,8 @@
-.minh-Rows{
-  display:flex;
-  background-color: red;
-  border: 2px solid black;
+.InfoCopy{
+  width:100px
+}
+.minh-dropdown{
+  background-color: #eeeeee !important;
+  border-style: none !important;
+  color: black !important
 }
