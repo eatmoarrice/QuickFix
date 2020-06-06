@@ -37,7 +37,7 @@ function App() {
 		}
 	};
 	const getIssues = async () => {
-		console.log("issues here");
+		// console.log("issues here");
 		let url = "https://api.github.com/repos/facebook/react/issues/";
 		let data = await fetch(url);
 		let result = await data.json();
