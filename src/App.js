@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBarHey from "./components/NavBar";
+
 import IssueSearchBar from "./components/IssueSearchBar";
 import IssueBlock from "./components/IssueBlock";
 import PostIssue from "./components/PostIssue";
@@ -8,7 +10,7 @@ import OriginalPost from "./components/OriginalPost";
 import CommentBlock from "./components/CommentBlock";
 import SideBar from "./components/SideBar";
 import Reply from "./components/Reply";
-import PageNotFound from './components/PageNotFound'
+import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -37,18 +39,17 @@ function App() {
 		}
 	};
 	const getIssues = async () => {
-		console.log("issues here");
+		// console.log("issues here");
 		let url = "https://api.github.com/repos/facebook/react/issues/";
 		let data = await fetch(url);
 		let result = await data.json();
-		console.log("result",result);
+
+		console.log("result", result);
 	};
-
-
 
 	const postNewIssue = async () => {
 		const issue = { title: "here is the issue", body: "help me to fix this" };
-		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
+		const url = `https://api.github.com/repos/eatmoarrice/QuickFix/issues`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
@@ -66,11 +67,17 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
+
 				<NavBarHey path="/test1" />
 
 				<Switch>
 					<Route path="/" exact>
-						stuff here
+						Here is our HomePage.
+					</Route>
+					<Route path="/new">
+						<PostIssue token={token} />
+					</Route>
+					<Route path="/:owner/:repo/issues" exact>
 						<IssueSearchBar />
 						<IssueBlock />
 					</Route>
@@ -92,7 +99,6 @@ function App() {
 					</Route>
 					<Route path="/test">
 						<PageNotFound />
-
 					</Route>
 				</Switch>
 			</BrowserRouter>
