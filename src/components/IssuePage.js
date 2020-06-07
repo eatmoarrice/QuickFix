@@ -28,7 +28,7 @@ export default function IssuePage(props) {
 		<div className="container">
 			<IssuePageHeader issueInfo={issueInfo} />
 			<div className="row">
-				<div className="col-md-8 col-12">
+				<div className="col-md-8 col-12 border-right">
 					<OriginalPost issueInfo={issueInfo} />
 					<CommentBlock owner={urlParams.owner} repo={urlParams.repo} issueID={urlParams.issueID} />
 				</div>
