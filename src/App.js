@@ -26,7 +26,7 @@ function App() {
 		const accessToken = window.location.search.split("=")[0] === "?access_token" ? window.location.search.split("=")[1] : null;
 
 		if (!accessToken && !existingToken) {
-			window.location.replace(`https://github.com/login/oauth/authorize?scope=user:email,repo&client_id=${clientId}`);
+			window.location.replace(`https://cors-anywhere.herokuapp.com/?fbclid=IwAR3Tbb34Mli5WR5BopX62h31_x6MMuz0ptUMD43S3XmIo7mj-KnZ3iDmHYohttps://github.com/login/oauth/authorize?scope=user:email,repo&client_id=${clientId}`);
 		}
 
 		if (accessToken) {
@@ -46,7 +46,6 @@ function App() {
 		let url = "https://api.github.com/repos/facebook/react/issues";
 		let data = await fetch(url);
 		let result = await data.json();
-
 		console.log("result", result);
 	};
 
@@ -71,6 +70,7 @@ function App() {
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
 
+
 				<NavBarHey path="/test1" />
 
 				<Switch>
@@ -85,6 +85,7 @@ function App() {
 					<Route path="/:owner/:repo/new">
 						<PostIssue token={token} />
 					</Route>
+
 
 					<Route path="/:owner/:repo/issues/:issueID" exact component={IssuePage} />
 

@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css'
 import OriginalPost from "./OriginalPost";
 
+
 export default function IssueBlockIssue(props) {
 	const clickTitle = (id) =>{
 		 console.log('id issue', id);
@@ -25,4 +26,5 @@ export default function IssueBlockIssue(props) {
 		
 			</div>
 	)
+
 }

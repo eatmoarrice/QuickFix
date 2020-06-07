@@ -1,3 +1,12 @@
+
+.InfoCopy{
+  width:100px
+}
+.minh-dropdown{
+  background-color: #eeeeee !important;
+  border-style: none !important;
+  color: black !important
+}
 .App {
 	text-align: center;
 }

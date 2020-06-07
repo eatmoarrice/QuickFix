@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import ReactMarkdown from "react-markdown/with-html";
@@ -34,6 +35,7 @@ export default function CommentBlock(props) {
 		let result = await data.json();
 		setReaction(result);
 		console.log("emojoies", result);
+
 	};
 
 	useEffect(() => {
@@ -132,3 +134,4 @@ export default function CommentBlock(props) {
 		</div>
 	);
 }
+
