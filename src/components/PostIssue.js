@@ -1,5 +1,7 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import moment from 'moment'
 export default function PostIssue(props) {
-	return <div>Post a new issue below.</div>;
+	return(
+		<div></div>
+	)
 }

@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from 'react-markdown'
 import moment from 'moment'
 import Dropdown from 'react-bootstrap/Dropdown';
 import "../App.css";
 import Emoji from "react-emoji-render";
+import CodeBlock from "./CodeBlock";
 
 
 
@@ -128,7 +130,7 @@ export default function OriginalPost(props) {
 							</tr>
 							<tr>
 								<td></td>
-								<td colSpan="3" className="InfoCopy"><ReactMarkdown source={issueInfo.body} /></td>
+								<td colSpan="3" className="InfoCopy text-left"><ReactMarkdown source={issueInfo.body} renderers={{ code: CodeBlock }} /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -162,5 +164,6 @@ export default function OriginalPost(props) {
 	</div>
 
 	)
+
 }
 
