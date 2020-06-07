@@ -44,7 +44,11 @@ export default function IssueBlock(props) {
 	// a function to process data and arrange it into an array of <IssueBlockIssue/>
 	return (
 		<div>
-			<div>{item()}</div>
+			<div className="bigIssue">
+			{item()}
+		</div>
+
+
 			<IssueBlockHeader />
 			<div>
 				{/* array of <IssueBlockIssue/> */}
