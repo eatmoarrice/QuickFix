@@ -44,11 +44,8 @@ export default function CommentBlock(props) {
 
 	const [singleComment, setSingleComment] = useState(null);
 	const [reaction, setReaction] = useState(null);
-	let [replyName, setReplyName] = useState(null);
 
-	const reply = (user) => {
-		setReplyName(user);
-		console.log(user);
+	const reply = () => {
 		executeScroll();
 	};
 
@@ -75,7 +72,7 @@ export default function CommentBlock(props) {
 								<th>
 									<button
 										className="replyBtn"
-										onClick={() => reply(item.user.login)}
+										onClick={() => reply()}
 										style={{ backgroundColor: "#6c757d", color: "white", border: "none", borderRadius: "15px", paddingLeft: "15px", paddingRight: "15px", fontWeight: "bold" }}
 									>
 										Reply
@@ -129,7 +126,7 @@ export default function CommentBlock(props) {
 				);
 			})}
 			<div ref={myRef} style={{ marginBottom: "100px" }}>
-				<Reply replyName={replyName} />
+				<Reply />
 			</div>
 		</div>
 	);

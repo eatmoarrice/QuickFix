@@ -86,7 +86,7 @@ export default function OriginalPost(props) {
 						<thead>
 							<tr align="left" bgcolor="#eeeeee">
 								<th width="50"><img width="50" src={issueInfo.user.avatar_url}></img></th>
-								<th>{`${issueInfo.user.login} commented: ${moment(issueInfo.created_at).fromNow()}`}</th>
+								<th>{`${issueInfo.user.login}`}<span style={{ fontWeight: "normal" }}>{` commented: ${moment(issueInfo.created_at).fromNow()}`}</span></th>
 								<th></th>
 								<th className="text-right"></th>
 								<td>
