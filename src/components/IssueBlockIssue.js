@@ -9,6 +9,7 @@ import { Badge } from 'react-bootstrap'
 import "../App.css"
 
 
+
 export default function IssueBlockIssue(props) {
 	const clickTitle = (id) => {
 		console.log('id issue', id);
@@ -61,4 +62,5 @@ export default function IssueBlockIssue(props) {
 			</div>
 		</div>
 	)
+
 }
