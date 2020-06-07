@@ -1,11 +1,10 @@
-
-.InfoCopy{
-  width:100px
+.InfoCopy {
+	width: 100px;
 }
-.minh-dropdown{
-  background-color: #eeeeee !important;
-  border-style: none !important;
-  color: black !important
+.minh-dropdown {
+	background-color: #eeeeee !important;
+	border-style: none !important;
+	color: black !important;
 }
 .App {
 	text-align: center;
@@ -63,20 +62,6 @@
 	justify-content: space-around;
 }
 
-/* code {
-	background-color: #eeeeee;
-	margin-left: 15px;
-	padding: 5px;
-	border-radius: 2px;
-}
-
-pre code {
-	background-color: #eeeeee;
-	margin-left: 15px;
-	padding: 5px;
-	border-radius: 2px;
-} */
-
 .fa-caret-left {
 	font-size: 25px;
 	position: relative;
@@ -125,4 +110,44 @@ a.dropdown-item {
 
 .avatar {
 	transform: scale(1.05, 1.05);
+}
+
+img {
+	max-width: 300px;
+	max-height: 300px;
+}
+
+a {
+	word-break: break-all;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #5ba4bb;
+	border-radius: 0.4em;
+}
+
+.speech-bubble:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 28px solid transparent;
+	border-top-color: #5ba4bb;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -14px;
+	margin-bottom: -28px;
+}
+
+.speech1 {
+	text-align: center;
+	padding: 20px;
+	line-height: 30px;
+	width: 300px;
+	height: 100px;
+	font-size: 20px;
+	color: white;
 }
