@@ -151,3 +151,7 @@ a {
 	font-size: 20px;
 	color: white;
 }
+
+pre {
+	white-space: pre-wrap;
+}
