@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch} from "react-router-dom";
-import NavBar from "./components/NavBar";
-import IssueSearchBar from "./components/IssueSearchBar";
-import IssueBlock from "./components/IssueBlock";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NavBarHey from "./components/NavBar";
+
+// import IssueSearchBar from "./components/IssueSearchBar";
+// import IssueBlock from "./components/IssueBlock";
 import PostIssue from "./components/PostIssue";
-import OriginalPost from "./components/OriginalPost";
-import CommentBlock from "./components/CommentBlock";
-import SideBar from "./components/SideBar";
-import Reply from "./components/Reply";
+// import OriginalPost from "./components/OriginalPost";
+// import CommentBlock from "./components/CommentBlock";
+// import SideBar from "./components/SideBar";
+// import Reply from "./components/Reply";
+import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import IssuePage from "./components/IssuePage";
+import HomePage from "./components/HomePage";
+import AllIssuesPage from "./components/AllIssuesPage";
 
 const clientId = process.env.REACT_APP_CLIENT_ID;
 
@@ -36,12 +42,12 @@ function App() {
 		}
 	};
 	const getIssues = async () => {
-		console.log("issues here");
+		// console.log("issues here");
 		let url = "https://api.github.com/repos/facebook/react/issues";
 		let data = await fetch(url);
 		let result = await data.json();
-		console.log(result);
 
+		console.log("result", result);
 	};
 
 	const postNewIssue = async () => {
@@ -57,40 +63,33 @@ function App() {
 		});
 	};
 	useEffect(() => {
-		
-		getIssues()
+		// getIssues();
 		getToken();
 	}, []);
 	return (
 		<div className="App">
 			<BrowserRouter>
 				{/* <button onClick={() => getIssues()}>issues</button> */}
-				<NavBar />
-				
-        
+
+				<NavBarHey path="/test1" />
+
 				<Switch>
 					<Route path="/" exact>
-						Here is our HomePage.
-						
+						<HomePage />
 					</Route>
 					<Route path="/new">
 						<PostIssue token={token} />
 					</Route>
-					<Route path="/:owner/:repo/issues" exact>
-						<IssueSearchBar />
-						<IssueBlock />
+					<Route path="/:owner/:repo/issues" exact component={AllIssuesPage} />
+
+					<Route path="/:owner/:repo/new">
+						<PostIssue token={token} />
 					</Route>
-					<Route path="/:owner/:repo/issues/:issueID">
-						<div className="row">
-							<div className="col-md-8 col-12">
-								<OriginalPost />
-								<CommentBlock />
-								<Reply token={token} />
-							</div>
-							<div className="col-md-4 d-md-block d-none">
-								<SideBar />
-							</div>
-						</div>
+
+					<Route path="/:owner/:repo/issues/:issueID" exact component={IssuePage} />
+
+					<Route path="/test">
+						<PageNotFound />
 					</Route>
 				</Switch>
 			</BrowserRouter>
