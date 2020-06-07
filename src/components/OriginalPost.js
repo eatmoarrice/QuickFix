@@ -24,6 +24,7 @@ export default function OriginalPost(props) {
 					<table width="100%">
 						<thead>
 							<tr align="left" bgcolor="#eeeeee">
+
 								<th width="50">
 									<img width="50" src={props.issueInfo.user.avatar_url}></img>
 								</th>
