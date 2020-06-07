@@ -27,9 +27,7 @@ function App() {
 		const accessToken = window.location.search.split("=")[0] === "?access_token" ? window.location.search.split("=")[1] : null;
 
 		if (!accessToken && !existingToken) {
-			window.location.replace(
-				`https://cors-anywhere.herokuapp.com/?fbclid=IwAR3Tbb34Mli5WR5BopX62h31_x6MMuz0ptUMD43S3XmIo7mj-KnZ3iDmHYohttps://github.com/login/oauth/authorize?scope=user:email,repo&client_id=${clientId}`
-			);
+			window.location.replace(`https://github.com/login/oauth/authorize?scope=user:email,repo&client_id=${clientId}`);
 		}
 
 		if (accessToken) {

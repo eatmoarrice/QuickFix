@@ -36,7 +36,7 @@ export default function IssueBlock(props) {
 		getIssues();
 	}, []);
 	const item = () => {
-		return info.map((item) => <IssueBlockIssue info={item} />);
+		return info.map((item) => <IssueBlockIssue info={item} owner={props.owner} repo={props.repo} />);
 	};
 	if (info === null) {
 		return <div>Loading</div>;
