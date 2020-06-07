@@ -3,16 +3,16 @@ import moment from "moment";
 
 export default function IssuePageHeader(props) {
 	const postedAt = () => {
-		let vinh = moment(props.issueInfo.updated_at);
+		let time = moment(props.issueInfo.created_at);
 
-		let date = vinh.fromNow();
+		let date = time.fromNow();
 		// console.log("date", date)
 
 		return date;
 	};
 
 	return (
-		<div className="d-flex justify-content-between">
+		<div className="d-flex justify-content-between border-bottom mb-4">
 			<div>
 				<h4>
 					{props.issueInfo.title} #{props.issueInfo.number}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import ReactMarkdown from "react-markdown/with-html";
@@ -36,7 +35,6 @@ export default function CommentBlock(props) {
 		let result = await data.json();
 		setReaction(result);
 		console.log("emojoies", result);
-
 	};
 
 	useEffect(() => {
@@ -58,7 +56,7 @@ export default function CommentBlock(props) {
 		<div style={{ marginTop: "20px" }}>
 			{singleComment.map((item, index) => {
 				return (
-					<table key={item.id} width="800">
+					<table key={item.id} width="100%" className="border">
 						<thead>
 							<tr height="50" align="left" bgcolor="#eeeeee">
 								<th width="50">
@@ -94,7 +92,14 @@ export default function CommentBlock(props) {
 									colSpan="3"
 									align="left"
 									className="ArticleCopy"
-									style={{ paddingBottom: "10px", paddingLeft: "10px", borderLeft: "solid 1px #eeeeee", borderRight: "solid 1px #eeeeee", borderBottom: "solid 1px #eeeeee" }}
+									style={{
+										paddingBottom: "10px",
+										paddingLeft: "20px",
+										paddingRight: "20px",
+										borderLeft: "solid 1px #eeeeee",
+										borderRight: "solid 1px #eeeeee",
+										borderBottom: "solid 1px #eeeeee"
+									}}
 								>
 									<ReactMarkdown key={index} source={item.body} renderers={{ code: CodeBlock }} />
 								</td>
@@ -132,4 +137,3 @@ export default function CommentBlock(props) {
 		</div>
 	);
 }
-

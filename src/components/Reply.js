@@ -1,7 +1,6 @@
-import React, {useState} from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default function Reply(props) {
 
@@ -11,6 +10,7 @@ export default function Reply(props) {
 		console.log("reply",replyMessage)
 		console.log("token", props.token)
 		const issue = { title: "here is the issue", body: {replyMessage} };
+
 		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
 		const response = await fetch(url, {
 			method: "POST",
@@ -50,4 +50,4 @@ export default function Reply(props) {
 			</tbody>
 		</table>
 	</div>;
-}
+
