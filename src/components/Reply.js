@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button';
 
 export default function Reply(props) {
 
-	let replyNameSet
 	let [replyMessage, setReplyMessage]=useState('')
 
 	const postNewReply = async () => {
-		console.log("messageeeee",replyMessage)
+		console.log("reply",replyMessage)
+		console.log("token", props.token)
 		const issue = { title: "here is the issue", body: {replyMessage} };
 		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
 		const response = await fetch(url, {
@@ -21,13 +21,6 @@ export default function Reply(props) {
 			body: JSON.stringify(issue)
 		});
 	};
-
-	if (props.replyName == null){
-		replyMessage = `message`
-	}
-	else if (props.replyName == true){
-		replyMessage = `@ ${props.replyName} `
-	}
 
 	return <div>
 	
@@ -48,7 +41,7 @@ export default function Reply(props) {
 					<td>
 						<form>
 							<Form.Group style={{resize:"none", borderBottomLeftRadius:"20px", borderBottomRightRadius:"20px", padding:"10px", width:"100%", border:"#eeeeee solid 1px", marginTop:"-1px"}}name="message" rows="10" controlId="exampleForm.ControlTextarea1">
-    						<Form.Control as="textarea" rows="10" defaultValue={replyNameSet} value={replyMessage} onInput={e => setReplyMessage(e.target.value)}/>
+    						<Form.Control as="textarea" rows="10" placeholder="message" value={replyMessage} onInput={e => setReplyMessage(e.target.value)}/>
  					 		</Form.Group>
 							<Button onClick={()=>postNewReply()} variant="primary">Submit</Button>
 						</form>
@@ -56,7 +49,5 @@ export default function Reply(props) {
 				</tr>
 			</tbody>
 		</table>
-
-
 	</div>;
 }

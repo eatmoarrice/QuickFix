@@ -34,7 +34,7 @@ export default function PostIssue(props) {
 					<td width="50">
 					</td>
 					<td style={{backgroundColor:"#eeeeee", borderTopLeftRadius:"20px", borderTopRightRadius:"20px", padding:"10px"}}>
-						<b>New Issue</b>
+						<b>New Post</b>
 					</td>
 				</tr>
 				<tr>
@@ -56,5 +56,6 @@ export default function PostIssue(props) {
 				</tr>
 			</tbody>
 		</table>
-	</div>;
-}
+	</div>
+	;
+} 

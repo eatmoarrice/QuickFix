@@ -18,6 +18,7 @@ export default function CommentBlock(props) {
 		HOORAY: "🎉",
 		CONFUSED: "😕",
 		HEART: "❤️"
+		
 	};
 
 	const fetchSingleComment = async () => {
