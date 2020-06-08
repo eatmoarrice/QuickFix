@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+// import { Link } from "react-router-dom";
 
 export default function IssuePageHeader(props) {
 	const postedAt = () => {
@@ -27,9 +28,7 @@ export default function IssuePageHeader(props) {
 				</div>
 			</div>
 
-			<div>
-				<button className="badge badge-success">New Issue</button>
-			</div>
+			<div></div>
 		</div>
 	);
 }

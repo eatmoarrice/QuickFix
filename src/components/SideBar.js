@@ -35,7 +35,7 @@ export default function SideBar(props) {
 				</ListGroup.Item>
 				<ListGroup.Item>Projects: Awsome project</ListGroup.Item>
 				<ListGroup.Item>Milestone: {props.issueInfo.milestone}</ListGroup.Item>
-				<ListGroup.Item>Linked pull request: Successfully merging a pull request may close this issue. None yet</ListGroup.Item>
+				<ListGroup.Item>Linked pull request: Successfully merging a pull request may close this issue.</ListGroup.Item>
 			</ListGroup>
 		</div>
 	);

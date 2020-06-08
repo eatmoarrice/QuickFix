@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import IssueBlockHeader from "./IssueBlockHeader";
 import IssueBlockIssue from "./IssueBlockIssue";
-import Pagination from "./Pagination";
-// import { withRouter } from "react-router";
+import parse from "parse-link-header";
 import { useHistory } from "react-router-dom";
 
-// const IssueBlockWithRouter = withRouter(IssueBlock);
 export default function IssueBlock(props) {
 	const [info, setInfo] = useState(null);
+	const [pagebuttons, setPagebuttons] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [pages, setPages] = useState(null);
+	const [simpleURL, setsimpleURL] = useState(null);
 	let history = useHistory();
+	let pageNumbers = [];
 	const getIssues = async () => {
-		console.log("issues here");
 		let url = `https://api.github.com/repos/${props.owner}/${props.repo}/issues`;
 		let data = await fetch(url);
 		if (data.status == 404) {
@@ -18,43 +20,67 @@ export default function IssueBlock(props) {
 		}
 		let result = await data.json();
 		setInfo(result);
-		console.log(result);
+		let links = parse(data.headers.get("Link"));
+		if (links !== null) {
+			console.log(parse(data.headers.get("Link")));
+			let totalPages = parseInt(links.last.page);
+			let bareURL = links.last.url.split("=")[0];
+			calculatePages(totalPages, bareURL);
+			console.log(totalPages, bareURL);
+			setPages(totalPages);
+			setsimpleURL(bareURL);
+		} else {
+			calculatePages(1, url);
+		}
 	};
-	const postNewIssue = async () => {
-		const issue = { title: "here is the issue", body: "help me to fix this" };
-		let url = `https://api.github.com/repos/${props.owner}/${props.repo}/issues`;
-		const response = await fetch(url, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
-				Authorization: `token ${props.token}`
-			},
-			body: JSON.stringify(issue)
-		});
+
+	const getIssuesForPage = async (pageURL) => {
+		let data = await fetch(pageURL);
+		if (data.status == 404) {
+			return history.push("/404");
+		}
+		let result = await data.json();
+		setInfo(result);
+	};
+
+	const calculatePages = (totalPages, bareURL) => {
+		pageNumbers = [];
+		for (let i = 1; i <= totalPages; i++) {
+			let active = currentPage == i ? "active" : "";
+			pageNumbers.push(
+				<li className={`page-item`} key={`button-${i}`} onClick={() => goToPage(i, bareURL)}>
+					{/* <li className={`page-item ${active}`} key={`button-${i}`} onClick={() => goToPage(i, bareURL)}></li> */}
+					<a href="#" className="page-link">
+						{i}
+					</a>
+				</li>
+			);
+		}
+		setPagebuttons(pageNumbers);
+	};
+	const goToPage = (i, bareURL) => {
+		setCurrentPage(i);
+		getIssuesForPage(`${bareURL}=${i}`);
+		console.log(currentPage, pages, simpleURL);
 	};
 	useEffect(() => {
 		getIssues();
 	}, []);
 	const item = () => {
-		return info.map((item) => <IssueBlockIssue info={item} />);
+		return info.map((item, i) => <IssueBlockIssue info={item} key={i} owner={props.owner} repo={props.repo} />);
 	};
-	if (info === null) {
+	if (info === null || pagebuttons.length === 0) {
 		return <div>Loading</div>;
 	}
-	// a function to process data and arrange it into an array of <IssueBlockIssue/>
 	return (
 		<div>
-			<div className="bigIssue">
-			{item()}
-		</div>
-
-
+			<div className="bigIssue">{item()}</div>
 			<IssueBlockHeader />
-			<div>
-				{/* array of <IssueBlockIssue/> */}
-				Issues here.
+			{/* <Pagination /> */}
+			<div className="d-flex justify-content-center">
+				<ul className="pagination">{pagebuttons}</ul>
 			</div>
-			<Pagination />
+			{/* {links === null ? <div>1 page </div> : calculatePages()} */}
 		</div>
 	);
 }

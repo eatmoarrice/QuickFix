@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import ReactMarkdown from "react-markdown/with-html";
 import CodeBlock from "./CodeBlock";
-import Reply from "./Reply";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
@@ -17,7 +16,6 @@ export default function CommentBlock(props) {
 		HOORAY: "🎉",
 		CONFUSED: "😕",
 		HEART: "❤️"
-		
 	};
 
 	const fetchSingleComment = async () => {
@@ -131,9 +129,7 @@ export default function CommentBlock(props) {
 					</table>
 				);
 			})}
-			<div ref={myRef} style={{ marginBottom: "100px" }}>
-				<Reply />
-			</div>
+			<div ref={myRef} style={{ marginBottom: "100px" }}></div>
 		</div>
 	);
 }

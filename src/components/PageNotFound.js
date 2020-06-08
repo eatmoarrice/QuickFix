@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function PageNotFound() {
 	return (
-		<div>
+		<div className="text-center">
 			<Jumbotron>
 				<h1>QuickFix: 404 Page Not Found</h1>
 				<p>The page you are looking for cannot be found my dear and beloved friend.</p>
