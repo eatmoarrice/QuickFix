@@ -8,21 +8,22 @@ export default function Reply(props) {
 	const postNewReply = async () => {
 		console.log("reply", replyMessage);
 		console.log("token", props.token);
-		const issue = { title: "here is the issue", body: { replyMessage } };
+		const issue = { body: replyMessage };
 
-		const url = `https://api.github.com/repos/legobitna/itviec/issues`;
+		const url = `https://api.github.com/repos/${props.owner}/${props.repo}/issues/${props.issueID}/comments`;
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
-				Authorization: "token" + props.token
+				Authorization: `token ${localStorage.getItem("token")}`
 			},
 			body: JSON.stringify(issue)
 		});
+		window.location.reload();
 	};
 
 	return (
-		<div>
+		<div className="text-center">
 			{/* Here is Reply and token is {props.token} */}
 			<table width="100%" style={{ marginTop: "20px" }}>
 				<tbody>

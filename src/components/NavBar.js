@@ -10,6 +10,9 @@ export default function NavBarHey() {
 		setSearchText(e.target.value);
 		console.log(searchText);
 	};
+	const submitHandler = (e) => {
+		e.preventDefault();
+	};
 	const startSearch = () => {
 		history.push(`/${searchText}/issues`);
 	};
@@ -20,9 +23,12 @@ export default function NavBarHey() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto">
-						<Nav.Link to="/">Home</Nav.Link>
+						<Nav.Link href="/">Home</Nav.Link>
+						<Nav.Link href="/eatmoarrice/QuickFix/issues">QF</Nav.Link>
+						<Nav.Link href="/facebook/react/issues">Facebook-React</Nav.Link>
+						<Nav.Link href="/apple/swift/issues">Apple-Swift</Nav.Link>
 					</Nav>
-					<Form inline>
+					<Form inline onSubmit={submitHandler}>
 						<FormControl
 							type="text"
 							placeholder=":owner/:repo"

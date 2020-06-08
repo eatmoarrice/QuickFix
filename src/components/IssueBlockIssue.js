@@ -19,13 +19,13 @@ export default function IssueBlockIssue(props) {
 		if (props.info.labels[0] == null || props.info.labels[0] == "dependencies") {
 			return;
 		} else
-			return props.info.labels.map((id) => {
+			return props.info.labels.map((id, i) => {
 				return (
-					<div>
-						<Badge class="badgess" style={{ marginLeft: 10, marginTop: 10 }} variant="success">
+					<span key={i}>
+						<Badge className="badgess" style={{ marginLeft: 10, marginTop: 10 }} variant="info">
 							{id.name}
 						</Badge>
-					</div>
+					</span>
 				);
 			});
 		// console.log('labelne',props.info.labels.map(id => {return <div>{id.name}</div>}))
@@ -34,21 +34,24 @@ export default function IssueBlockIssue(props) {
 	return (
 		<div>
 			<div className="mg" onClick={() => clickTitle(props.info.number)}>
-				<div className="flex">
-					<div style={{ display: "flex" }}>
-						<FontAwesomeIcon icon={faInfoCircle} className="icon" style={{ marginLeft: 20 }} />
-						<div className="flex1">
-							<a href={`/${props.owner}/${props.repo}/issues/${props.info.number}`}>
-								<h3 style={{ fontSize: 18, marginLeft: 20, marginTop: 10, textAlign: "left" }}>{props.info.title}</h3>
-							</a>
-
-							{loadingLabels()}
+				<div className="row">
+					<div className="col-10">
+						<div style={{ display: "flex" }}>
+							<FontAwesomeIcon icon={faInfoCircle} className="icon" style={{ marginLeft: 20 }} />
+							<div className="flex1">
+								<a href={`/${props.owner}/${props.repo}/issues/${props.info.number}`}>
+									<h3 style={{ fontSize: 18, marginLeft: 20, marginTop: 10, textAlign: "left" }}>
+										{props.info.title} {loadingLabels()}
+									</h3>
+								</a>
+							</div>
 						</div>
 					</div>
-
-					<div className="flex-end">
-						<FontAwesomeIcon icon={faCommentAlt} style={{ color: "#586069", marginRight: 5, marginTop: 4 }} />
-						<h4 style={{ fontSize: 16, textAlign: "right" }}>{props.info.comments}</h4>
+					<div className="col-2">
+						<div className="d-flex justify-content-end mr-5">
+							<FontAwesomeIcon icon={faCommentAlt} style={{ color: "#586069", marginRight: 5, marginTop: 4 }} />
+							<h4 style={{ fontSize: 16, textAlign: "right" }}>{props.info.comments}</h4>
+						</div>
 					</div>
 				</div>
 
