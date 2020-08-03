@@ -29,8 +29,10 @@ REACT_APP_SECRET_KEY={Your SL}
 * Pagination is included.
 * User can see more details by clicking on an issue in the list.
 * User can create a new issue, or comment on an existing issue (do note that GitHub API takes a while to update, so please wait 3-5 minutes if you don't see the changes right away).
+* User can see Assignees 
 * Comments are Markdown friendly and formatted with react-syntax-highlighter.
 
 ## Problems
 * Tables can overflow.
 * Reactions are static (i.e. haven't been done).
+* Pagination needs to be redone.
