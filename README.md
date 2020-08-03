@@ -28,7 +28,7 @@ REACT_APP_SECRET_KEY={Your SL}
 * User can type in an `:owner` and `:repo` and the website will list the issues. If such a repository is not found, error 404 will show.
 * Pagination is included.
 * User can see more details by clicking on an issue in the list.
-* User can create a new issue, or comment on an existing issue.
+* User can create a new issue, or comment on an existing issue (do note that GitHub API takes a while to update, so please wait 3-5 minutes if you don't see the changes right away).
 * Comments are Markdown friendly and formatted with react-syntax-highlighter.
 
 ## Problems
