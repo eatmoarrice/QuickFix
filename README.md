@@ -18,8 +18,10 @@ You also need a server for GitHub Login. Run the included `server.js` whenever y
 
 Add your own GitHub Client ID and Secret Key to the `.env` file:
 
-```REACT_APP_CLIENT_ID={Your CI}```
-```REACT_APP_SECRET_KEY={Your SL}```
+```
+REACT_APP_CLIENT_ID={Your CI}
+REACT_APP_SECRET_KEY={Your SL}
+```
 
 ## Features
 * User is forced to log in with GitHub.
