@@ -30,3 +30,7 @@ REACT_APP_SECRET_KEY={Your SL}
 * User can see more details by clicking on an issue in the list.
 * User can create a new issue, or comment on an existing issue.
 * Comments are Markdown friendly and formatted with react-syntax-highlighter.
+
+## Problems
+* Tables can overflow.
+* Reactions are static (i.e. haven't been done).
