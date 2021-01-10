@@ -49,6 +49,7 @@
 }
 .badgess {
 	margin: 0 10px;
+	font-weight: 500 !important;
 }
 
 img {
@@ -67,7 +68,7 @@ a {
 }
 
 .speech-bubble:after {
-	content: "";
+	content: '';
 	position: absolute;
 	bottom: 0;
 	left: 50%;
